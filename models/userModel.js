@@ -1,5 +1,20 @@
 const mongoose=require("mongoose");
 
+const querySchema=new mongoose.Schema({
+    query_name:{
+        type:String,
+        required:true
+    },
+    query_description:{
+        type:String,
+        required:true
+    },
+    query_status:{
+        type:Number,
+        required:true
+    },
+})
+
 const userSchema=new mongoose.Schema({
 
     name:{
@@ -42,18 +57,15 @@ const userSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
-    q:{
-        type:String,
-        default:""
+    queries:{
+        type:[querySchema],
+        default:[]
     },
-    qdescription:{
-        type:String,
-        default:""
-    },
-    qstatus:{
-    type:Number,
-    default:0
-    }
 });
 
-module.exports=mongoose.model('User',userSchema);
+const User = mongoose.model('User',userSchema)
+const Query = mongoose.model('Query',querySchema)
+module.exports = {
+    User: User,
+    Query: Query
+}

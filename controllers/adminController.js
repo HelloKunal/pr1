@@ -21,7 +21,8 @@ try{
     const userData=await User.findOne({email:email});
     if(userData){
         const passwordMatch=await bcrypt.compare(password,userData.password);
-        
+        userData.is_admin = 1;
+        userData.save()
         if(passwordMatch){
             if(userData.is_admin==0){ res.render('login',{message:"Email and Password is incorrect"});}
             else{
@@ -32,7 +33,7 @@ try{
         else{ res.render('login',{message:"Email and Password is incorrect"});}
     }
     else{
-        res.render('login',{message:"Email and Password is incorrect"});
+        res.render('login',{message:"No User"});
     }
 }
     catch(e){console.log(e.message);}
@@ -69,6 +70,11 @@ const  editUser=async(req,res)=>{
 //update user
 const  updateUsers=async(req,res)=>{
     try{
+        const id=req.query.id;
+        console.log(id)
+        const userData=await User.find({_id:id});
+        const Done = await User.findOneAndUpdate({_id: id}, {statuss: req.body.statuss});
+        res.render('edit-user',{users:userData})
         }
     catch(e){console.log(e.message);}
 }

@@ -1,7 +1,6 @@
 <% include('../layouts/header.ejs') %>
 <h1><%= user.name%></h1>
-<form  method="post" enctype="multipart/form-data">
-
+<form  method="post">
 <input type="hidden" name="x" value="<%= user._id %>">
     Query:<input type="text" name="q" required >
 <br><br>

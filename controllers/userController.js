@@ -1,4 +1,5 @@
-const User=require('../models/userModel');
+const {User}=require('../models/userModel');
+const {Query}=require('../models/userModel');
 const bcrypt=require('bcrypt');
 
 const securePassword=async(password)=>{
@@ -34,9 +35,7 @@ const insertUser= async(req,res)=>{
                 password:spassword,
                 statuss:req.body.statuss,
                 is_admin:0,
-                qstatus:0,
-                q:"yo",
-                qdescription:"ha"
+                queries:[],
         }); 
         const userData=await user.save();
         if(userData){
@@ -113,15 +112,20 @@ const editLoad=async(req,res)=>{
 const addQuery=async(req,res)=>{
     try{  
         const p=req.body.x;
-        console.log(p);
-        console.log(req.body);
+        // console.log(p);
+        // console.log(req.body);
         const q=await User.findById({_id:p});
-        console.log(q);
-       
-            // const user=await User.findByIdAndUpdate(
-            //     { _id:id },{$set:{query:req.body.query, qdescription:req.body.qdescription}}
-            // )
-
+        // console.log(q);
+        const newQuery = new Query({
+            query_name: req.body.q,
+            query_description: req.body.qdescription,
+            query_status: 0,
+        });
+        const user=await User.findByIdAndUpdate(
+            { _id:p },{$push:{queries:newQuery}}
+        )
+        const q1=await User.findById({_id:p});
+        console.log(q1);
        res.redirect('/home');
     }
     catch(error){console.log(error.message);}
