@@ -1,0 +1,21 @@
+<% include('../layouts/header.ejs') %>
+
+<form  method="post">
+    <b>Status</b>
+   <p style="color: blueviolet;"> <%= query.query_name %></p>
+    
+    Active:<input type="radio" name="statuss" value="1"
+    <% if(query.query_status===1){ %> checked <% } %> >
+    <br>
+    Inactive:<input type="radio" name="statuss" value="2"
+    <% if(query.query_status===2){ %> checked <% } %>>
+    <br>
+    Pending:<input type="radio" name="statuss" value="0"
+    <% if(query.query_status===0){ %> checked <% } %>>
+    <br><br>
+    <input type="hidden" name="id" value="<%= id%>">
+    <input type="submit" value="Update Status">
+</form>
+<a href="/admin/queries">Go DashBoard</a>
+
+<% include('../layouts/footer.ejs') %>

@@ -1,9 +1,13 @@
 <% include('../layouts/header.ejs') %>
 <h2>HOME</h2>
-<a href="/admin/dashboard">Dash-Boarrd</a>
 <h3>Welcome <%= admin.name %>
 </h3>
-<table width="50%">
+
+<h4><a href="/admin/dashboard">Go DashBoard</a></h4>
+
+<h4><a href="/admin/queries">Go Query DashBoard</a></h4>
+
+<!-- <table width="50%">
     <tr>
         <td>Name:</td>
        <td><%= admin.name %></td>
@@ -38,7 +42,7 @@
     </tr>
     
 
-</table>
+</table> -->
 
 <a href="/admin/logout">Logout</a>
 

@@ -32,6 +32,11 @@ admin_route.get('/dashboard',auth.isLogin,adminController.adminDashboard);
 admin_route.get('/edit-user',auth.isLogin,adminController.editUser);
 admin_route.post('/edit-user',auth.isLogin,adminController.updateUsers);
 
+admin_route.get('/queries', auth.isLogin, adminController.loadQueries)
+
+admin_route.get('/edit-query',auth.isLogin,adminController.editQuery);
+admin_route.post('/edit-query',auth.isLogin,adminController.updateQuery);
+
 admin_route.get('*',function(req,res){
     res.redirect('/admin');
 })
