@@ -1,0 +1,45 @@
+<% include('../layouts/header.ejs') %>
+<h2>HOME</h2>
+<a href="/admin/dashboard">Dash-Boarrd</a>
+<h3>Welcome <%= admin.name %>
+</h3>
+<table width="50%">
+    <tr>
+        <td>Name:</td>
+       <td><%= admin.name %></td>
+    </tr>
+    <tr>
+        <td>Contact number:</td>
+       <td><%= admin.contact %></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+       <td><%= admin.email %></td>
+    </tr>
+    <tr>
+        <td>Pancard Number:</td>
+       <td><%= admin.pancard %></td>
+    </tr>
+    <tr>
+        <td>Company Name:</td>
+       <td><%= admin.company_name %></td>
+    </tr>
+    <tr>
+        <td>Experience:</td>
+       <td><%= admin.experience %></td>
+    </tr>
+    <tr>
+        <td>Skills:</td>
+       <td><%= admin.technical_skills%></td>
+    </tr>
+    <tr>
+        <td>Status:</td>
+       <td><%= admin.statuss %></td>
+    </tr>
+    
+
+</table>
+
+<a href="/admin/logout">Logout</a>
+
+<% include('../layouts/footer.ejs') %>

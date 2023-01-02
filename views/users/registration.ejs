@@ -1,0 +1,46 @@
+
+
+<% include('../layouts/header.ejs') %>
+
+<h3>User Registration Form</h3>
+<form method="post">
+   Name: <input type="text" name="name" placeholder="Enter Name" required>
+   <br><br>
+
+   Contact: <input type="number" name="contact"placeholder="Enter contact number" required>
+   <br><br>
+
+   Email:  <input type="email" name="email" placeholder="Enter Email-Id" required>
+   <br><br>
+
+   PAN: <input type="text" name="pancard"  required>
+   <br><br>
+
+   Company Name: <input type="text" name="company_name" placeholder="Enter company name" required>
+   <br><br>
+
+   Experience (in years): <input type="number" name="experience" placeholder="Enter experience" required>
+   <br><br>
+
+   Technical Skills: <input type="text" name="technical_skills" placeholder="Enter skills" required>
+   <br><br>
+
+   Password: <input type="password" name="password"placeholder="Enter password" required>
+   <br><br>
+
+    <input type="submit"  value="register">
+   <br><br>
+</form>
+
+
+
+<%
+if(typeof message !=='undefined'){
+   %>
+   <p style="color:greenyellow"><%=message%></p>
+   <%
+}
+%>
+
+
+<% include('../layouts/footer.ejs') %>

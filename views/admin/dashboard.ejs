@@ -1,0 +1,49 @@
+<% include('../layouts/header.ejs') %>
+
+<h1>DashBoard</h1>
+<table width="50%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact Number</th>
+        <th>PanCard</th>
+        <th>Company</th>
+        <th>Experience</th>
+        <th>skills</th>
+        <th>satus</th>
+        <th>Actions</th>
+    </tr>
+    <% if(users.length>0){
+        for(let i=0;i<users.length;i++){
+            %><tr>
+                <td><%= users[i].name %></td>
+                <td><%= users[i].email %></td>
+                <td><%= users[i].contact %></td>
+                <td><%= users[i].pancard %></td>
+                <td><%= users[i].company %></td>
+                <td><%= users[i].experience %></td>
+                <td><%= users[i].skills %></td>
+                <td>
+                    <% if(users[i].statuss==0){
+                        %> <p>Pending</p>
+                    <% }
+                    else if(users[i].statuss==1){
+                        %> <p style="color: green;">Active</p>
+                    <% }
+                    else {
+                        %>
+                        <p style="color: red;">Inactive</p>
+                    <% } %>
+                </td>
+                <td><a href="/admin/edit-user?id=<%=users[i]._id %>">Change Status</a></td>
+            </tr>
+            <% } 
+    }
+    else{ %>
+        <p>No Users Found</p>
+   <% }
+    %>
+</table>
+<a href="/admin/home">Go To Home</a>
+
+<% include('../layouts/footer.ejs') %>
