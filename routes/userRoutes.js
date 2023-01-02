@@ -51,5 +51,7 @@ user_route.get('/logout',auth.isLogin,userController.userLogout);
 user_route.get('/edit',auth.isLogin,userController.editLoad);
 user_route.post('/edit',auth.isLogin,userController.addQuery);
 
+user_route.get('/dashboard', auth.isLogin, userController.dashboard)
+
 
 module.exports=user_route;

@@ -1,0 +1,38 @@
+<% include('../layouts/header.ejs') %>
+
+<h1>DashBoard</h1>
+<table width="50%">
+    <tr>
+        <th>Query Name</th>
+        <th>Query Description</th>
+        <th>Query Status</th>
+    </tr>
+    <% if(user.queries.length>0){
+        for(let j=0;j<user.queries.length;j++){
+            %><tr>
+                <td><%= user.queries[j].query_name %></td>
+                <td><%= user.queries[j].query_description %></td>
+                <td>
+                    <% if(user.queries[j].query_status==0){
+                        %> <p>Pending</p>
+                    <% }
+                    else if(user.queries[j].query_status==1){
+                        %> <p style="color: green;">Active</p>
+                    <% }
+                    else {
+                        %>
+                        <p style="color: red;">Inactive</p>
+                    <% } %>
+                </td>
+            </tr>
+            <% 
+        }       
+    }
+    else{ %>
+        <p>No Users Found</p>
+   <% }
+    %>
+</table>
+<a href="/admin/home">Go To Home</a>
+
+<% include('../layouts/footer.ejs') %>

@@ -131,8 +131,19 @@ const addQuery=async(req,res)=>{
     catch(error){console.log(error.message);}
 }
 
+//user dsahboard
+const  dashboard=async(req,res)=>{
+    try{
+        const user=await User.findOne({_id:req.session.user_id});
+        console.log(user)
+        console.log(user.queries)
+        res.render('user_query_dashboard',{user:user});
+    }
+    catch(e){console.log(e.message);}
+}
+
 module.exports={
     loadRegister,insertUser,
     loginLoad,verifyLogin,loadHome,
-    userLogout,editLoad,addQuery
+    userLogout,editLoad,addQuery,dashboard
 }
